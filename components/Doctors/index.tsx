@@ -5,11 +5,13 @@ import { useAppContext } from '../../context';
 import DoctorCard from '../DoctorCard';
 import ToolBar from '../ToolBar';
 import Alert from 'react-bootstrap/Alert';
+import { useTranslation } from 'next-i18next';
 import SC from './style';
 import { Doctor } from '../../types';
 
 const Doctors = () => {
   const { state, fetchDoctors } = useAppContext();
+  const { t } = useTranslation('common');
 
   const showDoctors = () => {
     return state.doctors.data.map((doctor: Doctor) => {
@@ -26,7 +28,7 @@ const Doctors = () => {
   }, [ state.page, state.search, state.sortOrder ]);
 
   return  <SC.Container fluid="md">
-    <SC.Title>Book-a-Doctor</SC.Title>
+    <SC.Title>{t('main-title')}</SC.Title>
     {state.error && <Alert variant="danger">{state.error}</Alert>}
     {state.doctors && state.doctors.data ? (
       <>

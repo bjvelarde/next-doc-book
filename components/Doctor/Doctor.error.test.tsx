@@ -1,6 +1,4 @@
 import { render, screen, waitFor } from '../../test-utils/testing-library-utils';
-// import { Router } from 'react-router-dom';
-// import {createMemoryHistory} from 'history';
 import getConfig from 'next/config';
 import { rest } from 'msw';
 import { server } from '../../test-utils/mockServer';
@@ -28,12 +26,7 @@ server.resetHandlers(
 
 test('handles system error', async () => {
 
-  // const history = createMemoryHistory();
-  render(
-    // <Router history={history}>
-      <Doctor />
-    // </Router>
-  );
+  render(<Doctor />);
 
 	await waitFor(async () => {
 		const alert = await screen.findByRole('alert');

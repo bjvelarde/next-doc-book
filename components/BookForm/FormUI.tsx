@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'next-i18next';
 import Form from 'react-bootstrap/Form';
 import { useFormikContext, Field, ErrorMessage } from 'formik';
 import { useDoctor } from '../../hooks/useDoctor';
@@ -22,6 +23,7 @@ const FormUI = ({ doctor }: Props) => {
     setFieldValue,
     isSubmitting,
   } = useFormikContext<Booking>();
+  const { t } = useTranslation('common');
 
   const { today, restDays, isClinicOpen, activeStartDate } = useDoctor(doctor);
   const [bookingDate, setBookingDate] = useState(activeStartDate);
@@ -34,10 +36,10 @@ const FormUI = ({ doctor }: Props) => {
   return (
     <>
       <SC.FormGroup className={`mb-3${touched.name && errors.name ? ' error': ''}`} controlId="name">
-        <Form.Label>Your name</Form.Label>
+        <Form.Label>{t('booking.name')}</Form.Label>
         <Field
           component={Form.Control}
-          placeholder="Your name"
+          placeholder={t('booking.name')}
           defaultValue={values.name}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -45,7 +47,7 @@ const FormUI = ({ doctor }: Props) => {
         <ErrorMessage name="name" component={SC.Error} />
       </SC.FormGroup>
       <Form.Group className="mb-3">
-        <Form.Label>Date</Form.Label>
+        <Form.Label>{t('booking.date')}</Form.Label>
         <SC.DatePicker
           calendarType="US"
           onChange={(v: Date) => {
@@ -65,14 +67,14 @@ const FormUI = ({ doctor }: Props) => {
         />
       </Form.Group>
       <SC.FormGroup className={`mb-3${touched.start && errors.start ? ' error': ''}`} controlId="start">
-        <Form.Label>Time Slot</Form.Label>
+        <Form.Label>{t('booking.start')}</Form.Label>
         <Field
           component={FormSelect}
           defaultValue={values.start}
           onChange={handleChange}
           onBlur={handleBlur}
         >
-          <option value=''>Choose Time</option>
+          <option value=''>{t('booking.start.choose')}</option>
           {getDaySchedule(doctor, today, bookingDate)}
         </Field>
         <ErrorMessage name="start" component={SC.Error} />
@@ -80,7 +82,7 @@ const FormUI = ({ doctor }: Props) => {
       <Field type="hidden" name="date" value={getFormattedDate(bookingDate)} />
       <Field type="hidden" name="doctorId" value={doctor.id} />
       <SC.Confirm variant="primary" type="submit" disabled={isSubmitting}>
-        Confirm
+        {t('booking.confirm')}
       </SC.Confirm>
     </>
   );

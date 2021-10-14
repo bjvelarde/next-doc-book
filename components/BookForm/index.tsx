@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'next-i18next';
 import Alert from 'react-bootstrap/Alert';
 import { Formik, Form } from 'formik';
 import { useAppContext } from '../../context';
@@ -23,14 +24,15 @@ const BookForm = ({ doctor }: Props) => {
     status: '',
     message: ''
   });
+  const { t } = useTranslation('common');
 
   const validateForm = (values: FormFields) => {
     const errors: FormFields = {};
     if (!values.name) {
-      errors.name = 'Please enter your name';
+      errors.name = t('booking.error.name.required');
     }
     if (!values.start) {
-      errors.start = 'Please choose a time slot';
+      errors.start = t('booking.error.start.required');
     }
     return errors;
   };
@@ -45,7 +47,7 @@ const BookForm = ({ doctor }: Props) => {
           await createBooking(values);
           setStatus({
             status: 'SUCCESS',
-            message: 'Booking Created'
+            message: t('booking.alert.success')
           });
         } catch (e: any) {
           setStatus({

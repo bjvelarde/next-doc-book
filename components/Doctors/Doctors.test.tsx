@@ -1,23 +1,17 @@
-import { render, screen, waitFor, waitForElementToBeRemoved } from '../../test-utils/testing-library-utils';
-// import { Router } from 'react-router-dom';
-// import {createMemoryHistory} from 'history';
+import { render, screen, waitForElementToBeRemoved } from '../../test-utils/testing-library-utils';
 import Doctors from '.';
 
 test('renders with doctors list', async () => {
-  // const history = createMemoryHistory();
-  render(
-    // <Router history={history}>
-      <Doctors />
-    // </Router>
-  );
+  render(<Doctors />);
 
-  const titleText = screen.getByRole('heading', { name: /book-a-doctor/i });
+  const titleText = screen.getByRole('heading', { name: /main-title/i });
   expect(titleText).toBeInTheDocument();
 
   await waitForElementToBeRemoved(() => screen.getByTestId(/spinner/i));
 
   const cards = await screen.findAllByTestId(/doctor-card/i);
 	expect(cards.length).toBeGreaterThan(0);
+
   // await waitFor(async () => {
 	// 	const cards = await screen.findAllByTestId(/doctor-card/i);
 

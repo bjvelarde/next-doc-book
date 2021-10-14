@@ -1,0 +1,19 @@
+{
+  "main-title": "Buchen Sie einen Doktor",
+  "placeholder.search": "Suchen...",
+  "opening-hours": "Öffnungszeiten",
+  "open-hours.day": "Tag",
+  "opening-hours.start": "Öffnung",
+  "opening-hours.end": "Schließung",
+  "opening-hours.closed": "Geschlossen",
+  "booking.name": "Ihr Name",
+  "Buchung.Datum": "Datum",
+  "booking.start": "Zeitfenster",
+  "booking.start.choose": "Zeit wählen",
+  "booking.trigger": "Termin buchen",
+  "booking.confirm": "Bestätigen",
+  "booking.alert.success": "Buchung erstellt",
+  "booking.error.name.required": "Bitte geben Sie Ihren Namen ein",
+  "booking.error.start.required": "Bitte wählen Sie ein Zeitfenster",
+  "booking.thankyou": "Vielen Dank {{ name }}, Ihr Termin wurde am {{ date }} um {{ start }} gebucht"
+}

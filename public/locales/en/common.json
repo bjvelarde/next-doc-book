@@ -1,0 +1,19 @@
+{
+    "main-title": "Book-a-Doctor",
+    "placeholder.search": "Search...",
+    "opening-hours": "Opening Hours",
+    "opening-hours.day": "Day",
+    "opening-hours.start": "Opening",
+    "opening-hours.end": "Closing",
+    "opening-hours.closed": "Closed",
+    "booking.name": "Your Name",
+    "booking.date": "Date",
+    "booking.start": "Time Slot",
+    "booking.start.choose": "Choose Time",
+    "booking.trigger": "Book Appointment",
+    "booking.confirm": "Confirm",
+    "booking.alert.success": "Booking Created",
+    "booking.error.name.required": "Please enter your name",
+    "booking.error.start.required": "Please choose a time slot",
+    "booking.thankyou": "Thank you {{ name }}, your appointment has been booked on {{ date }} at {{ start }}"
+}

@@ -31,12 +31,9 @@ afterEach(() => server.resetHandlers());
 // Clean up after the tests are finished.
 afterAll(() => server.close());
 
-// jest.mock('next/router', () => {
-//   return {
-//     useRouter: () => {
-//       return {
-//         query: ''
-//       }
-//     }
-//   }
-// });
+jest.mock('next-i18next', () => ({
+  ...jest.requireActual('next-i18next'), // use actual for all non-hook parts
+  useTranslation: () => ({
+    t: str => str
+  })
+}));

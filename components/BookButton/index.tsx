@@ -1,5 +1,6 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'next-i18next';
 import Modal from 'react-bootstrap/Modal';
 import BookForm from '../BookForm';
 import { useAppContext } from '../../context';
@@ -11,8 +12,9 @@ interface Props {
   label?: string;
 }
 
-const BookButton = ({ doctor, label = 'Book Appointment' }: Props) => {
+const BookButton = ({ doctor, label = 'booking.trigger' }: Props) => {
   const [show, setShow] = useState(false);
+  const { t } = useTranslation('common');
   const { resetSysError } = useAppContext();
 
   const handleClose = () => {
@@ -23,8 +25,8 @@ const BookButton = ({ doctor, label = 'Book Appointment' }: Props) => {
 
   return (
     <>
-      <SC.Trigger variant="primary" onClick={handleShow} aria-label={label}>
-        {label}
+      <SC.Trigger variant="primary" onClick={handleShow} aria-label={t(label)}>
+        {t(label)}
       </SC.Trigger>
 
       <Modal show={show} onHide={handleClose} data-testid="booking-modal">

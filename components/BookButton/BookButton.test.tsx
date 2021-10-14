@@ -1,19 +1,12 @@
 import { render, screen, waitFor } from '../../test-utils/testing-library-utils';
 import userEvent from '@testing-library/user-event';
-// import { Router } from 'react-router-dom';
-// import {createMemoryHistory} from 'history';
 import BookButton from '.';
 import mockDoctor from '../../test-utils/mockDoctor.json';
 
 test('renders and toggles modal area', async () => {
-  // const history = createMemoryHistory();
-  render(
-    // <Router history={history}>
-      <BookButton doctor={mockDoctor}/>
-    // </Router>
-  );
+  render(<BookButton doctor={mockDoctor}/>);
 
-  const button = screen.getByRole('button', {name: /book appointment/i} );
+  const button = screen.getByRole('button', {name: /booking.trigger/i} );
   expect(button).toBeInTheDocument();
 
   const modalHidden = screen.queryByTestId(/booking-modal/i);
@@ -33,7 +26,7 @@ test('renders and toggles modal area', async () => {
   const closeModal = screen.getByRole('button', {name: /close/i} );
   expect(closeModal).toBeInTheDocument();
 
-  const confirmButton = screen.getByRole('button', {name: /confirm/i} );
+  const confirmButton = screen.getByRole('button', {name: /booking.confirm/i} );
   expect(confirmButton).toBeInTheDocument();
 
   const doctorName = screen.getByText(`DR. ${mockDoctor.name.toUpperCase()}`);

@@ -1,11 +1,13 @@
 import { useFormikContext } from 'formik';
+import { useTranslation } from 'next-i18next';
 import { Booking } from '../../types';
 
 const ThankYou = () => {
   const { values } = useFormikContext<Booking>();
+  const { t } = useTranslation('common');
 
   return <div>
-    <p>Thank you { values.name }, your appointment has been booked on { values.date } at { values.start }</p>
+    <p>{t('booking.thankyou', values)}</p>
   </div>;
 }
 

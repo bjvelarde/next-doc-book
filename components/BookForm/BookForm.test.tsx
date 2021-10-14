@@ -1,18 +1,11 @@
 import { screen, renderWithFormik, waitFor } from '../../test-utils/testing-library-utils';
-// import { Router } from 'react-router-dom';
-// import {createMemoryHistory} from 'history';
 import BookForm from '.';
 import mockDoctor from '../../test-utils/mockDoctor.json';
 
 test('renders with necessary elements', async () => {
-  // const history = createMemoryHistory();
-  renderWithFormik(
-    // <Router history={history}>
-      <BookForm doctor={mockDoctor} />
-    // </Router>
-  );
+  renderWithFormik(<BookForm doctor={mockDoctor} />);
 
-  const confirmButton = screen.getByRole('button', {name: /confirm/i} );
+  const confirmButton = screen.getByRole('button', {name: /booking.confirm/i} );
   expect(confirmButton).toBeInTheDocument();
 
   await waitFor(async () => {
@@ -21,10 +14,10 @@ test('renders with necessary elements', async () => {
 		expect(timeSlots.length).toBeGreaterThan(0);
 	});
 
-  const nameField = screen.getByRole('textbox', {name: /your name/i});
+  const nameField = screen.getByRole('textbox', {name: /booking.name/i});
   expect(nameField).toBeInTheDocument();
 
-  const timeSlotCombo = screen.getByRole('combobox', {name: /time slot/i});
+  const timeSlotCombo = screen.getByRole('combobox', {name: /booking.start/i});
   expect(timeSlotCombo).toBeInTheDocument();
 
   const datePicker = screen.getByText(/date/i);

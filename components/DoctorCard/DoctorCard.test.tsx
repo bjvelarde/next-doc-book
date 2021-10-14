@@ -12,6 +12,6 @@ test('renders with default label', async () => {
   const title = screen.getByRole('heading', {name: /fake doctor/i} );
   expect(title).toBeInTheDocument();
 
-  const openingHoursTitle = screen.getByRole('heading', {name: /opening hours/i} );
+  const openingHoursTitle = screen.getByRole('heading', {name: /opening-hours/i} );
   expect(openingHoursTitle).toBeInTheDocument();
 });

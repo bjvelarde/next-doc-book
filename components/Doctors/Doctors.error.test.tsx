@@ -19,12 +19,7 @@ test('handles system error', async () => {
 		rest.get(`${baseUrl}${doctorPath}`, (req, res, ctx) => res(ctx.status(500)))
 	);
 
-  // const history = createMemoryHistory();
-  render(
-    // <Router history={history}>
-      <Doctors />
-    // </Router>
-  );
+  render(<Doctors />);
 
   await waitForElementToBeRemoved(() => screen.getByTestId(/spinner/i));
 

@@ -1,11 +1,13 @@
 import { KeyboardEvent, ChangeEvent, useState } from "react";
 import { debounce } from 'lodash';
+import { useTranslation } from 'next-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useAppContext } from "../../context";
 import SC from './style';
 
 const SearchBar = () => {
+  const { t } = useTranslation('common');
   const { state, search } = useAppContext();
   const [term, setTerm] = useState(state.search);
   const handleClick = debounce(() => search(term), 300);
@@ -27,7 +29,7 @@ const SearchBar = () => {
   return <>
     <SC.Input
       name="search"
-      placeholder="Search..."
+      placeholder={t('placeholder.search')}
       onChange={handleChange}
       onKeyPress={handleKeyPress}
       defaultValue={state.search}

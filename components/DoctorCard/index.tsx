@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserMd, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import Accordion from 'react-bootstrap/Accordion';
@@ -15,14 +16,15 @@ interface Props {
 }
 
 const DoctorCard = ({ doctor }: Props) => {
+  const { t } = useTranslation('common');
   const { fullAddress, sortedOpeningHours } = useDoctor(doctor);
 
   const showOpeningHours = () => {
     return sortedOpeningHours.map(slot => {
       return <SC.TableRow key={slot.day}>
           <td>{slot.day}</td>
-          <td>{slot.isClosed ? 'Closed' : formatTime(slot.start)}</td>
-          <td>{slot.isClosed ? 'Closed' : formatTime(slot.end)}</td>
+          <td>{slot.isClosed ? t('opening-hours.closed') : formatTime(slot.start)}</td>
+          <td>{slot.isClosed ? t('opening-hours.closed') : formatTime(slot.end)}</td>
         </SC.TableRow>;
     });
   };
@@ -47,14 +49,14 @@ const DoctorCard = ({ doctor }: Props) => {
     </Link>
     <Accordion>
       <SC.AccordionItem eventKey="0">
-        <SC.AccordionHeader>Opening Hours</SC.AccordionHeader>
+        <SC.AccordionHeader>{t('opening-hours')}</SC.AccordionHeader>
         <SC.AccordionBody>
           <Table striped bordered hover size="sm">
             <thead>
               <SC.TableRow>
-                <th>Day</th>
-                <th>Opening</th>
-                <th>Closing</th>
+                <th>{t('opening-hours.day')}</th>
+                <th>{t('opening-hours.start')}</th>
+                <th>{t('opening-hours.end')}</th>
               </SC.TableRow>
             </thead>
             <tbody>

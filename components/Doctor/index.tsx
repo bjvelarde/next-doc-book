@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserMd, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import Table from 'react-bootstrap/Table';
@@ -18,6 +19,7 @@ const Doctor = () => {
   const { id } = router.query;
 
   const { state, fetchDoctor } = useAppContext();
+  const { t } = useTranslation('common');
 
   useEffect(() => {
     async function fetchData() {
@@ -31,8 +33,8 @@ const Doctor = () => {
     return sortOpeningHours(state.doctor.opening_hours).map(slot => {
       return <SC.TableRow key={slot.day} data-testid="slot-row">
           <td>{slot.day}</td>
-          <td>{slot.isClosed ? 'Closed' : formatTime(slot.start)}</td>
-          <td>{slot.isClosed ? 'Closed' : formatTime(slot.end)}</td>
+          <td>{slot.isClosed ? t('opening-hours.closed') : formatTime(slot.start)}</td>
+          <td>{slot.isClosed ? t('opening-hours.closed') : formatTime(slot.end)}</td>
         </SC.TableRow>;
     });
   };
@@ -58,9 +60,9 @@ const Doctor = () => {
         <Table striped bordered hover size="sm" aria-label="opening-hours">
           <thead>
             <SC.TableRow>
-              <th>Day</th>
-              <th>Opening</th>
-              <th>Closing</th>
+              <th>{t('opening-hours.day')}</th>
+              <th>{t('opening-hours.start')}</th>
+              <th>{t('opening-hours.end')}</th>
             </SC.TableRow>
           </thead>
           <tbody>

@@ -1,6 +1,4 @@
 import { render, screen, waitForElementToBeRemoved } from '../../test-utils/testing-library-utils';
-// import { Router } from 'react-router-dom';
-// import {createMemoryHistory} from 'history';
 import Doctor from '.';
 import mockDoctor from '../../test-utils/mockDoctor.json';
 
@@ -14,15 +12,10 @@ jest.mock('next/router', () => ({
 }));
 
 test('renders doctor page', async () => {
-  // const history = createMemoryHistory();
 
-  render(
-    // <Router history={history}>
-      <Doctor />
-    // </Router>
-  );
+  render(<Doctor />);
 
-  const headerLink = screen.getByRole('link', { name: /book-a-doctor/i });
+  const headerLink = screen.getByRole('link', { name: /main-title/i });
   expect(headerLink).toBeInTheDocument();
 
   await waitForElementToBeRemoved(() => screen.getByTestId(/spinner/i));
