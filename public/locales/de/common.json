@@ -14,6 +14,7 @@
   "booking.confirm": "Bestätigen",
   "booking.alert.success": "Buchung erstellt",
   "booking.error.name.required": "Bitte geben Sie Ihren Namen ein",
+  "booking.error.name.invalid": "Bitte geben Sie einen gültigen Namen ein",
   "booking.error.start.required": "Bitte wählen Sie ein Zeitfenster",
   "booking.thankyou": "Vielen Dank {{ name }}, Ihr Termin wurde am {{ date }} um {{ start }} gebucht"
 }

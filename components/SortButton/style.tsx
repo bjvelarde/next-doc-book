@@ -9,10 +9,12 @@ const Container = styled.div`
 const Icon = styled.div`
   background-color: lightseagreen;
   border-radius: 50%;
+  padding: 6px;
+  width: 38px;
+  height: 38px;
 
   > svg {
     font-size: 24px;
-    margin: 8px 12px;
     color: white;
   }
 

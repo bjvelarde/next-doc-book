@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import Form from 'react-bootstrap/Form';
 
+const Container = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
 const Input = styled(Form.Control)`
   border-radius: 20px;
   border: 1px solid rgba(0, 139, 139, 0.25);
@@ -26,6 +31,7 @@ const Icon = styled.div`
 `;
 
 const SC = {
+  Container,
   Icon,
   Input
 };

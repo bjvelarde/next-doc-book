@@ -14,6 +14,7 @@
     "booking.confirm": "Confirm",
     "booking.alert.success": "Booking Created",
     "booking.error.name.required": "Please enter your name",
+    "booking.error.name.invalid": "Please enter a valid name",
     "booking.error.start.required": "Please choose a time slot",
     "booking.thankyou": "Thank you {{ name }}, your appointment has been booked on {{ date }} at {{ start }}"
 }

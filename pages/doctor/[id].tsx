@@ -5,13 +5,13 @@ import Doctor from '../../components/Doctor';
 import useApi from '../../api';
 import { Doctor as DoctorType } from '../../types';
 
-const DoctorPage: NextPage = () => {
-  return <Doctor />;
-};
-
 interface Props {
   locale: string;
 }
+
+const DoctorPage: NextPage<Props> = (props: Props) => {
+  return <Doctor />;
+};
 
 export const getStaticPaths = async () => {
   const { fetchDoctors } = useApi();

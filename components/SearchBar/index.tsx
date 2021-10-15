@@ -26,7 +26,7 @@ const SearchBar = () => {
     }
   };
 
-  return <>
+  return <SC.Container>
     <SC.Input
       name="search"
       placeholder={t('placeholder.search')}
@@ -38,7 +38,7 @@ const SearchBar = () => {
     <SC.Icon onClick={handleClick} role="button" aria-label="search-icon">
       <FontAwesomeIcon icon={faSearch} />
     </SC.Icon>
-  </>;
+  </SC.Container>;
 }
 
 export default SearchBar;

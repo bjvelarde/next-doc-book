@@ -7,6 +7,7 @@ import { useAppContext } from '../../context';
 import FormUI from './FormUI';
 import ThankYou from './ThankYou';
 import { Doctor } from '../../types';
+import formSchema from './formSchema';
 
 interface Props {
   doctor: Doctor;
@@ -26,21 +27,10 @@ const BookForm = ({ doctor }: Props) => {
   });
   const { t } = useTranslation('common');
 
-  const validateForm = (values: FormFields) => {
-    const errors: FormFields = {};
-    if (!values.name) {
-      errors.name = t('booking.error.name.required');
-    }
-    if (!values.start) {
-      errors.start = t('booking.error.start.required');
-    }
-    return errors;
-  };
-
   return (
     <Formik
       initialValues={{ name: '', date: '', doctorId: doctor.id, start: '' }}
-      validate={validateForm}
+      validationSchema={formSchema(t)}
       onSubmit={async (values: FormFields, { setSubmitting }) => {
         try {
           values.start = parseInt(values.start);
