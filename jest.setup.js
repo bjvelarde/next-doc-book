@@ -37,3 +37,13 @@ jest.mock('next-i18next', () => ({
     t: str => str
   })
 }));
+
+jest.mock('next/router', () => ({
+  ...jest.requireActual('next/router'), // use actual for all non-hook parts
+  useRouter: () => ({
+    router: {
+      locale: 'en',
+      push: jest.fn()
+    }
+  })
+}));
